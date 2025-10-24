@@ -1,0 +1,204 @@
+// =============================================================================
+// VARIABILI LESS - Design System
+// =============================================================================
+// Questo file contiene tutte le variabili del progetto per garantire
+// consistenza visiva e facilità di manutenzione.
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// COLORI
+// -----------------------------------------------------------------------------
+
+// Colori Primari
+@color-primary: #2c5282;        // Blu professionale (per CTA, links)
+@color-primary-dark: #1a365d;   // Blu scuro (hover, accenti)
+@color-primary-light: #4a90e2;  // Blu chiaro (highlights)
+
+// Colori Secondari
+@color-secondary: #718096;      // Grigio neutro
+@color-secondary-dark: #4a5568; // Grigio scuro
+@color-secondary-light: #a0aec0;// Grigio chiaro
+
+// Colori Accento
+@color-accent: #ed8936;         // Arancione caldo (per elementi speciali)
+@color-accent-light: #fbd38d;   // Arancione chiaro
+
+// Colori di Sistema
+@color-success: #48bb78;
+@color-warning: #ed8936;
+@color-error: #f56565;
+@color-info: #4299e1;
+
+// Colori di Background
+@color-bg-primary: #ffffff;     // Bianco
+@color-bg-secondary: #f7fafc;   // Grigio chiarissimo
+@color-bg-tertiary: #edf2f7;    // Grigio chiaro
+@color-bg-dark: #2d3748;        // Scuro per footer
+
+// Colori di Testo
+@color-text-primary: #2d3748;   // Nero-grigio principale
+@color-text-secondary: #4a5568; // Grigio per testi secondari
+@color-text-muted: #718096;     // Grigio chiaro per info
+@color-text-light: #a0aec0;     // Grigio molto chiaro
+@color-text-inverse: #ffffff;   // Bianco per testi su sfondo scuro
+
+// -----------------------------------------------------------------------------
+// TIPOGRAFIA
+// -----------------------------------------------------------------------------
+
+// Font Families
+@font-primary: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+@font-heading: 'Merriweather', Georgia, 'Times New Roman', serif;
+@font-mono: 'Courier New', monospace;
+
+// Font Sizes
+@font-size-xs: 0.75rem;    // 12px
+@font-size-sm: 0.875rem;   // 14px
+@font-size-base: 1rem;     // 16px
+@font-size-md: 1.125rem;   // 18px
+@font-size-lg: 1.25rem;    // 20px
+@font-size-xl: 1.5rem;     // 24px
+@font-size-2xl: 1.875rem;  // 30px
+@font-size-3xl: 2.25rem;   // 36px
+@font-size-4xl: 3rem;      // 48px
+@font-size-5xl: 3.75rem;   // 60px
+
+// Font Weights
+@font-weight-light: 300;
+@font-weight-normal: 400;
+@font-weight-medium: 500;
+@font-weight-semibold: 600;
+@font-weight-bold: 700;
+@font-weight-extrabold: 800;
+@font-weight-black: 900;
+
+// Line Heights
+@line-height-tight: 1.25;
+@line-height-snug: 1.375;
+@line-height-normal: 1.5;
+@line-height-relaxed: 1.625;
+@line-height-loose: 2;
+
+// -----------------------------------------------------------------------------
+// SPACING
+// -----------------------------------------------------------------------------
+
+@spacing-xs: 0.25rem;    // 4px
+@spacing-sm: 0.5rem;     // 8px
+@spacing-md: 1rem;       // 16px
+@spacing-lg: 1.5rem;     // 24px
+@spacing-xl: 2rem;       // 32px
+@spacing-2xl: 3rem;      // 48px
+@spacing-3xl: 4rem;      // 64px
+@spacing-4xl: 6rem;      // 96px
+@spacing-5xl: 8rem;      // 128px
+
+// -----------------------------------------------------------------------------
+// LAYOUT
+// -----------------------------------------------------------------------------
+
+// Container
+@container-max-width: 1200px;
+@container-padding: @spacing-lg;
+
+// Breakpoints (corrispondono a Bootstrap 5)
+@breakpoint-xs: 0;
+@breakpoint-sm: 576px;
+@breakpoint-md: 768px;
+@breakpoint-lg: 992px;
+@breakpoint-xl: 1200px;
+@breakpoint-xxl: 1400px;
+
+// Z-index
+@z-index-dropdown: 1000;
+@z-index-sticky: 1020;
+@z-index-fixed: 1030;
+@z-index-modal-backdrop: 1040;
+@z-index-modal: 1050;
+@z-index-popover: 1060;
+@z-index-tooltip: 1070;
+
+// -----------------------------------------------------------------------------
+// COMPONENTI
+// -----------------------------------------------------------------------------
+
+// Border Radius
+@border-radius-sm: 0.25rem;   // 4px
+@border-radius-md: 0.5rem;    // 8px
+@border-radius-lg: 0.75rem;   // 12px
+@border-radius-xl: 1rem;      // 16px
+@border-radius-full: 9999px;  // Rounded completo
+
+// Shadows
+@shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+@shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+@shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+@shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+@shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+@shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+// Transitions
+@transition-base: all 0.3s ease-in-out;
+@transition-fast: all 0.15s ease-in-out;
+@transition-slow: all 0.5s ease-in-out;
+
+// Borders
+@border-width: 1px;
+@border-color: #e2e8f0;
+@border-style: solid;
+
+// -----------------------------------------------------------------------------
+// HEADER & NAVIGATION
+// -----------------------------------------------------------------------------
+
+@header-height: 70px;
+@header-bg: @color-bg-primary;
+@header-shadow: @shadow-sm;
+@nav-link-color: @color-text-secondary;
+@nav-link-hover-color: @color-primary;
+@nav-link-active-color: @color-primary;
+
+// -----------------------------------------------------------------------------
+// HERO SECTION
+// -----------------------------------------------------------------------------
+
+@hero-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+@hero-text-color: @color-text-inverse;
+@hero-min-height: 500px;
+@hero-padding: @spacing-5xl @spacing-md;
+
+// -----------------------------------------------------------------------------
+// FOOTER
+// -----------------------------------------------------------------------------
+
+@footer-bg: @color-bg-dark;
+@footer-text-color: @color-text-light;
+@footer-padding: @spacing-2xl @spacing-md;
+
+// -----------------------------------------------------------------------------
+// FORMS
+// -----------------------------------------------------------------------------
+
+@input-border-color: @border-color;
+@input-border-radius: @border-radius-md;
+@input-padding: 0.75rem 1rem;
+@input-focus-border-color: @color-primary;
+@input-focus-shadow: 0 0 0 3px fade(@color-primary, 10%);
+
+// -----------------------------------------------------------------------------
+// BUTTONS
+// -----------------------------------------------------------------------------
+
+@btn-padding: 0.75rem 1.5rem;
+@btn-border-radius: @border-radius-md;
+@btn-font-weight: @font-weight-semibold;
+@btn-transition: @transition-base;
+
+// -----------------------------------------------------------------------------
+// CARDS
+// -----------------------------------------------------------------------------
+
+@card-border-radius: @border-radius-lg;
+@card-shadow: @shadow-md;
+@card-padding: @spacing-xl;
+@card-bg: @color-bg-primary;

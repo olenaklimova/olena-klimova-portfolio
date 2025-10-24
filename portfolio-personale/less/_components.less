@@ -1,0 +1,552 @@
+// =============================================================================
+// COMPONENTS
+// =============================================================================
+// Componenti riusabili: bottoni, card, form, tag, ecc.
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// BUTTONS
+// -----------------------------------------------------------------------------
+
+.btn {
+  display: inline-block;
+  padding: @btn-padding;
+  font-family: @font-primary;
+  font-size: @font-size-base;
+  font-weight: @btn-font-weight;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  border: @border-width @border-style transparent;
+  border-radius: @btn-border-radius;
+  cursor: pointer;
+  transition: @btn-transition;
+  user-select: none;
+
+  &:focus {
+    outline: 2px solid transparent;
+    box-shadow: 0 0 0 3px fade(@color-primary, 30%);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  // Button sizes
+  &.btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: @font-size-sm;
+  }
+
+  &.btn-lg {
+    padding: 1rem 2rem;
+    font-size: @font-size-lg;
+  }
+
+  // Button variants
+  &.btn-primary {
+    background-color: @color-primary;
+    color: @color-text-inverse;
+    border-color: @color-primary;
+
+    &:hover {
+      background-color: @color-primary-dark;
+      border-color: @color-primary-dark;
+      text-decoration: none;
+    }
+
+    &:active {
+      background-color: darken(@color-primary-dark, 5%);
+    }
+  }
+
+  &.btn-secondary {
+    background-color: @color-secondary;
+    color: @color-text-inverse;
+    border-color: @color-secondary;
+
+    &:hover {
+      background-color: @color-secondary-dark;
+      border-color: @color-secondary-dark;
+      text-decoration: none;
+    }
+  }
+
+  &.btn-outline-primary {
+    background-color: transparent;
+    color: @color-primary;
+    border-color: @color-primary;
+
+    &:hover {
+      background-color: @color-primary;
+      color: @color-text-inverse;
+      text-decoration: none;
+    }
+  }
+
+  &.btn-light {
+    background-color: @color-bg-primary;
+    color: @color-text-primary;
+    border-color: @border-color;
+
+    &:hover {
+      background-color: @color-bg-secondary;
+      text-decoration: none;
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// CARDS
+// -----------------------------------------------------------------------------
+
+.card {
+  background-color: @card-bg;
+  border: 1px solid @border-color;
+  border-radius: @card-border-radius;
+  box-shadow: @card-shadow;
+  overflow: hidden;
+  transition: @transition-base;
+
+  // Hover effect
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: @shadow-xl;
+  }
+
+  // Card image
+  .card-img-top {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  // Card body
+  .card-body {
+    padding: @card-padding;
+
+    &.d-flex {
+      display: flex;
+    }
+
+    &.flex-column {
+      flex-direction: column;
+    }
+  }
+
+  // Card title
+  .card-title {
+    margin-bottom: @spacing-md;
+    color: @color-text-primary;
+  }
+
+  // Card text
+  .card-text {
+    color: @color-text-secondary;
+    line-height: @line-height-relaxed;
+    margin-bottom: @spacing-md;
+
+    &.flex-grow-1 {
+      flex-grow: 1;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  // Responsive cards
+  &.h-100 {
+    height: 100%;
+  }
+
+  @media (max-width: @breakpoint-md) {
+    .card-body {
+      padding: @spacing-lg;
+    }
+  }
+}
+
+// Service Cards (per la sezione "Cosa Faccio")
+.service-card {
+  transition: @transition-base;
+
+  .icon {
+    color: @color-primary;
+    margin-bottom: @spacing-md;
+
+    svg {
+      width: 48px;
+      height: 48px;
+    }
+  }
+
+  &:hover {
+    border-color: @color-primary;
+
+    .icon {
+      color: @color-primary-dark;
+      transform: scale(1.1);
+    }
+  }
+}
+
+// Project Cards
+.card-progetto {
+  .card-img-top {
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .btn {
+    margin-top: auto;
+  }
+
+  @media (max-width: @breakpoint-md) {
+    .card-img-top {
+      height: 180px;
+    }
+  }
+}
+
+// Testimonial Card
+.testimonial-card {
+  border: none;
+  background-color: @color-bg-secondary;
+  box-shadow: none;
+
+  .testimonial-text {
+    font-size: @font-size-md;
+    font-style: italic;
+    line-height: @line-height-relaxed;
+    color: @color-text-secondary;
+    margin-bottom: @spacing-lg;
+
+    &::before {
+      content: '"';
+      font-size: @font-size-3xl;
+      color: @color-primary;
+      margin-right: @spacing-sm;
+    }
+
+    &::after {
+      content: '"';
+      font-size: @font-size-3xl;
+      color: @color-primary;
+      margin-left: @spacing-sm;
+    }
+  }
+
+  .testimonial-author {
+    font-weight: @font-weight-semibold;
+    color: @color-text-primary;
+  }
+
+  &:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// FORMS
+// -----------------------------------------------------------------------------
+
+.form-label {
+  display: block;
+  margin-bottom: @spacing-sm;
+  font-weight: @font-weight-medium;
+  color: @color-text-primary;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: @input-padding;
+  font-family: @font-primary;
+  font-size: @font-size-base;
+  line-height: @line-height-normal;
+  color: @color-text-primary;
+  background-color: @color-bg-primary;
+  border: @border-width @border-style @input-border-color;
+  border-radius: @input-border-radius;
+  transition: @transition-base;
+
+  &:focus {
+    border-color: @input-focus-border-color;
+    outline: 0;
+    box-shadow: @input-focus-shadow;
+  }
+
+  &::placeholder {
+    color: @color-text-muted;
+    opacity: 1;
+  }
+
+  &:disabled {
+    background-color: @color-bg-secondary;
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-text {
+  display: block;
+  margin-top: @spacing-sm;
+  font-size: @font-size-sm;
+  color: @color-text-muted;
+}
+
+.mb-3 {
+  margin-bottom: @spacing-md;
+}
+
+// Form validation (opzionale)
+.form-control.is-invalid {
+  border-color: @color-error;
+
+  &:focus {
+    box-shadow: 0 0 0 3px fade(@color-error, 20%);
+  }
+}
+
+.invalid-feedback {
+  display: block;
+  margin-top: @spacing-sm;
+  font-size: @font-size-sm;
+  color: @color-error;
+}
+
+// -----------------------------------------------------------------------------
+// TAGS / BADGES
+// -----------------------------------------------------------------------------
+
+.tag {
+  display: inline-block;
+  padding: @spacing-xs @spacing-md;
+  font-size: @font-size-sm;
+  font-weight: @font-weight-medium;
+  color: @color-primary;
+  background-color: fade(@color-primary, 10%);
+  border-radius: @border-radius-full;
+  margin-right: @spacing-sm;
+  margin-bottom: @spacing-sm;
+  transition: @transition-base;
+
+  &:hover {
+    background-color: fade(@color-primary, 20%);
+  }
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: @spacing-sm;
+}
+
+// -----------------------------------------------------------------------------
+// ICONS
+// -----------------------------------------------------------------------------
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// SHADOWS
+// -----------------------------------------------------------------------------
+
+.shadow-sm {
+  box-shadow: @shadow-sm;
+}
+
+.shadow-md {
+  box-shadow: @shadow-md;
+}
+
+.shadow-lg {
+  box-shadow: @shadow-lg;
+}
+
+.shadow-xl {
+  box-shadow: @shadow-xl;
+}
+
+// -----------------------------------------------------------------------------
+// BORDERS
+// -----------------------------------------------------------------------------
+
+.border {
+  border: @border-width @border-style @border-color;
+}
+
+.border-top {
+  border-top: @border-width @border-style @border-color;
+}
+
+.border-bottom {
+  border-bottom: @border-width @border-style @border-color;
+}
+
+.rounded {
+  border-radius: @border-radius-md;
+}
+
+.rounded-lg {
+  border-radius: @border-radius-lg;
+}
+
+// -----------------------------------------------------------------------------
+// LISTS
+// -----------------------------------------------------------------------------
+
+.list-group {
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+  margin-bottom: 0;
+  border-radius: @border-radius-md;
+}
+
+.list-group-item {
+  position: relative;
+  display: block;
+  padding: @spacing-md @spacing-lg;
+  color: @color-text-primary;
+  background-color: @color-bg-primary;
+  border: 1px solid @border-color;
+
+  &:first-child {
+    border-top-left-radius: @border-radius-md;
+    border-top-right-radius: @border-radius-md;
+  }
+
+  &:last-child {
+    border-bottom-left-radius: @border-radius-md;
+    border-bottom-right-radius: @border-radius-md;
+  }
+
+  & + & {
+    border-top-width: 0;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// ANIMATIONS
+// -----------------------------------------------------------------------------
+
+// Fade in animation
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+// Slide in animation
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.6s ease-out;
+}
+
+.slide-in-right {
+  animation: slideInRight 0.6s ease-out;
+}
+
+// -----------------------------------------------------------------------------
+// LOADING SPINNER (opzionale)
+// -----------------------------------------------------------------------------
+
+.spinner {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 4px solid fade(@color-primary, 20%);
+  border-top-color: @color-primary;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// OVERLAY
+// -----------------------------------------------------------------------------
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: @z-index-modal-backdrop;
+  display: none;
+
+  &.active {
+    display: block;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// RESPONSIVE UTILITIES
+// -----------------------------------------------------------------------------
+
+@media (max-width: @breakpoint-sm) {
+  .hide-on-mobile {
+    display: none !important;
+  }
+}
+
+@media (min-width: @breakpoint-md) {
+  .hide-on-desktop {
+    display: none !important;
+  }
+}

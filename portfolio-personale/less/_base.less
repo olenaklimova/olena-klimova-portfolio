@@ -1,0 +1,374 @@
+// =============================================================================
+// BASE STYLES
+// =============================================================================
+// Reset, normalizzazione e stili globali di base.
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// RESET E NORMALIZZAZIONE
+// -----------------------------------------------------------------------------
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+// -----------------------------------------------------------------------------
+// HTML & BODY
+// -----------------------------------------------------------------------------
+
+html {
+  font-size: 16px; // Base per calcoli rem
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: @font-primary;
+  font-size: @font-size-base;
+  font-weight: @font-weight-normal;
+  line-height: @line-height-normal;
+  color: @color-text-primary;
+  background-color: @color-bg-primary;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  // Offset per sticky navbar (quando scrollato)
+  &.scrolled-offset {
+    padding-top: 0;
+  }
+
+  &.scrolled {
+    padding-top: @header-height;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// MAIN CONTENT
+// -----------------------------------------------------------------------------
+
+#main-content {
+  flex: 1 0 auto; // Fa sì che il main si espanda e il footer resti in fondo
+}
+
+// -----------------------------------------------------------------------------
+// TIPOGRAFIA
+// -----------------------------------------------------------------------------
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: @font-heading;
+  font-weight: @font-weight-bold;
+  line-height: @line-height-tight;
+  margin-bottom: @spacing-md;
+  color: @color-text-primary;
+}
+
+h1 {
+  font-size: @font-size-4xl;
+  font-weight: @font-weight-black;
+
+  @media (max-width: @breakpoint-md) {
+    font-size: @font-size-3xl;
+  }
+}
+
+h2 {
+  font-size: @font-size-3xl;
+
+  @media (max-width: @breakpoint-md) {
+    font-size: @font-size-2xl;
+  }
+}
+
+h3 {
+  font-size: @font-size-2xl;
+
+  @media (max-width: @breakpoint-md) {
+    font-size: @font-size-xl;
+  }
+}
+
+h4 {
+  font-size: @font-size-xl;
+}
+
+h5 {
+  font-size: @font-size-lg;
+}
+
+h6 {
+  font-size: @font-size-base;
+  font-weight: @font-weight-semibold;
+}
+
+p {
+  margin-bottom: @spacing-md;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.lead {
+  font-size: @font-size-md;
+  font-weight: @font-weight-normal;
+  line-height: @line-height-relaxed;
+  color: @color-text-secondary;
+}
+
+// Display classes (per titoli hero)
+.display-1 {
+  font-size: @font-size-5xl;
+  font-weight: @font-weight-black;
+  line-height: @line-height-tight;
+
+  @media (max-width: @breakpoint-md) {
+    font-size: @font-size-4xl;
+  }
+}
+
+.display-2 {
+  font-size: @font-size-4xl;
+  font-weight: @font-weight-extrabold;
+
+  @media (max-width: @breakpoint-md) {
+    font-size: @font-size-3xl;
+  }
+}
+
+.display-3 {
+  font-size: @font-size-3xl;
+  font-weight: @font-weight-bold;
+
+  @media (max-width: @breakpoint-md) {
+    font-size: @font-size-2xl;
+  }
+}
+
+.display-4 {
+  font-size: @font-size-2xl;
+  font-weight: @font-weight-bold;
+
+  @media (max-width: @breakpoint-md) {
+    font-size: @font-size-xl;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// LINKS
+// -----------------------------------------------------------------------------
+
+a {
+  color: @color-primary;
+  text-decoration: none;
+  transition: @transition-base;
+
+  &:hover {
+    color: @color-primary-dark;
+    text-decoration: underline;
+  }
+
+  &:focus {
+    outline: 2px solid @color-primary;
+    outline-offset: 2px;
+  }
+
+  &:active {
+    color: @color-primary-dark;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// IMMAGINI E MEDIA
+// -----------------------------------------------------------------------------
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+// -----------------------------------------------------------------------------
+// LISTE
+// -----------------------------------------------------------------------------
+
+ul, ol {
+  margin-bottom: @spacing-md;
+  padding-left: @spacing-xl;
+}
+
+li {
+  margin-bottom: @spacing-sm;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Liste senza stile
+.list-unstyled {
+  list-style: none;
+  padding-left: 0;
+}
+
+// -----------------------------------------------------------------------------
+// UTILITY CLASSES
+// -----------------------------------------------------------------------------
+
+// Text alignment
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+// Text colors
+.text-muted {
+  color: @color-text-muted !important;
+}
+
+.text-primary {
+  color: @color-primary !important;
+}
+
+.text-secondary {
+  color: @color-text-secondary !important;
+}
+
+// Display utilities
+.d-none {
+  display: none !important;
+}
+
+.d-block {
+  display: block !important;
+}
+
+.d-inline-block {
+  display: inline-block !important;
+}
+
+.d-flex {
+  display: flex !important;
+}
+
+// Flex utilities
+.flex-column {
+  flex-direction: column !important;
+}
+
+.flex-grow-1 {
+  flex-grow: 1 !important;
+}
+
+.flex-wrap {
+  flex-wrap: wrap !important;
+}
+
+.justify-content-center {
+  justify-content: center !important;
+}
+
+.justify-content-between {
+  justify-content: space-between !important;
+}
+
+.align-items-center {
+  align-items: center !important;
+}
+
+.align-items-start {
+  align-items: flex-start !important;
+}
+
+// Spacing utilities
+.mb-0 { margin-bottom: 0 !important; }
+.mb-2 { margin-bottom: @spacing-sm !important; }
+.mb-3 { margin-bottom: @spacing-md !important; }
+.mb-4 { margin-bottom: @spacing-lg !important; }
+.mb-5 { margin-bottom: @spacing-2xl !important; }
+
+.mt-0 { margin-top: 0 !important; }
+.mt-2 { margin-top: @spacing-sm !important; }
+.mt-3 { margin-top: @spacing-md !important; }
+.mt-4 { margin-top: @spacing-lg !important; }
+.mt-5 { margin-top: @spacing-2xl !important; }
+
+.mx-auto {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.py-4 {
+  padding-top: @spacing-xl !important;
+  padding-bottom: @spacing-xl !important;
+}
+
+.py-5 {
+  padding-top: @spacing-3xl !important;
+  padding-bottom: @spacing-3xl !important;
+}
+
+// Gap utility
+.gap-2 { gap: @spacing-sm; }
+.gap-3 { gap: @spacing-md; }
+.gap-4 { gap: @spacing-lg; }
+
+// -----------------------------------------------------------------------------
+// ACCESSIBILITÀ
+// -----------------------------------------------------------------------------
+
+// Focus visible per keyboard navigation
+:focus-visible {
+  outline: 2px solid @color-primary;
+  outline-offset: 2px;
+}
+
+// Skip to main content link (per screen readers)
+.skip-to-main {
+  position: absolute;
+  left: -9999px;
+  z-index: 999;
+  padding: @spacing-md @spacing-lg;
+  background-color: @color-primary;
+  color: @color-text-inverse;
+  text-decoration: none;
+
+  &:focus {
+    left: 50%;
+    transform: translateX(-50%);
+    top: @spacing-md;
+  }
+}
+
+// Screen reader only
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

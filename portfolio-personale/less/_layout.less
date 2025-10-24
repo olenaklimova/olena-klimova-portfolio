@@ -1,0 +1,576 @@
+// =============================================================================
+// LAYOUT STYLES
+// =============================================================================
+// Stili per le strutture principali: header, footer, sezioni, container, grid.
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// CONTAINER
+// -----------------------------------------------------------------------------
+
+.container {
+  width: 100%;
+  max-width: @container-max-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: @container-padding;
+  padding-right: @container-padding;
+}
+
+// -----------------------------------------------------------------------------
+// GRID SYSTEM (Complemento a Bootstrap)
+// -----------------------------------------------------------------------------
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -@spacing-md;
+  margin-right: -@spacing-md;
+}
+
+// Gap utilities per row
+.g-4 > * {
+  padding-left: @spacing-lg;
+  padding-right: @spacing-lg;
+  margin-bottom: @spacing-xl;
+}
+
+.g-5 > * {
+  padding-left: @spacing-2xl;
+  padding-right: @spacing-2xl;
+  margin-bottom: @spacing-3xl;
+}
+
+// -----------------------------------------------------------------------------
+// HEADER & NAVIGATION
+// -----------------------------------------------------------------------------
+
+.header-main {
+  background-color: @header-bg;
+  box-shadow: @header-shadow;
+  transition: @transition-base;
+  z-index: @z-index-sticky;
+
+  .navbar-brand {
+    font-family: @font-heading;
+    font-size: @font-size-xl;
+    font-weight: @font-weight-bold;
+    color: @color-primary;
+    transition: @transition-base;
+
+    &:hover {
+      color: @color-primary-dark;
+      text-decoration: none;
+    }
+  }
+
+  .navbar-toggler {
+    border: none;
+    padding: @spacing-sm;
+
+    &:focus {
+      box-shadow: none;
+      outline: 2px solid @color-primary;
+    }
+  }
+
+  .navbar-nav {
+    .nav-link {
+      color: @nav-link-color;
+      font-weight: @font-weight-medium;
+      padding: @spacing-sm @spacing-md;
+      transition: @transition-base;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background-color: @color-primary;
+        transition: @transition-base;
+        transform: translateX(-50%);
+      }
+
+      &:hover {
+        color: @nav-link-hover-color;
+        text-decoration: none;
+
+        &::after {
+          width: 80%;
+        }
+      }
+
+      &.active {
+        color: @nav-link-active-color;
+        font-weight: @font-weight-semibold;
+
+        &::after {
+          width: 80%;
+        }
+      }
+    }
+  }
+
+  // Sticky behavior quando si scrolla
+  &.sticky-top {
+    position: sticky;
+    top: 0;
+  }
+
+  // Effetto quando si scrolla (aggiunto via JS)
+  body.scrolled & {
+    box-shadow: @shadow-md;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// HERO SECTION
+// -----------------------------------------------------------------------------
+
+.hero-section {
+  background: @hero-bg;
+  color: @hero-text-color;
+  min-height: @hero-min-height;
+  padding: @hero-padding;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+
+  // Overlay opzionale
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    color: @hero-text-color;
+    margin-bottom: @spacing-lg;
+  }
+
+  .hero-subtitle {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: @font-size-md;
+    margin-bottom: @spacing-2xl;
+  }
+
+  .btn-container {
+    display: flex;
+    gap: @spacing-md;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: @breakpoint-md) {
+    min-height: 400px;
+    padding: @spacing-3xl @spacing-md;
+
+    .btn-container {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// SECTIONS
+// -----------------------------------------------------------------------------
+
+.section {
+  padding: @spacing-4xl 0;
+
+  @media (max-width: @breakpoint-md) {
+    padding: @spacing-3xl 0;
+  }
+
+  // Sezione con background alternato
+  &.section-bg {
+    background-color: @color-bg-secondary;
+  }
+
+  // Sezione CTA
+  &.section-cta {
+    background: linear-gradient(135deg, @color-primary 0%, @color-primary-dark 100%);
+    color: @color-text-inverse;
+
+    h2, p {
+      color: @color-text-inverse;
+    }
+  }
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: @spacing-lg;
+  position: relative;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: @color-primary;
+    margin: @spacing-md auto 0;
+    border-radius: @border-radius-full;
+  }
+}
+
+.section-subtitle {
+  text-align: center;
+  color: @color-text-secondary;
+  font-size: @font-size-md;
+  max-width: 700px;
+  margin: 0 auto @spacing-3xl;
+}
+
+// -----------------------------------------------------------------------------
+// SOCIAL PROOF
+// -----------------------------------------------------------------------------
+
+.social-proof {
+  background-color: @color-bg-secondary;
+  border-top: 1px solid @border-color;
+  border-bottom: 1px solid @border-color;
+
+  .social-proof-title {
+    font-size: @font-size-sm;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: @font-weight-semibold;
+  }
+
+  // Grid per le client cards
+  .social-proof-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: @spacing-xl;
+    max-width: 900px;
+    margin: 0 auto;
+
+    @media (max-width: @breakpoint-sm) {
+      grid-template-columns: 1fr;
+      gap: @spacing-md;
+    }
+  }
+
+  // Singola card cliente
+  .client-card {
+    background-color: @color-bg-primary;
+    border: 2px solid @border-color;
+    border-radius: @border-radius-lg;
+    padding: @spacing-xl @spacing-lg;
+    transition: @transition-base;
+    position: relative;
+    overflow: hidden;
+
+    // Sottile accent bar in alto
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, @color-primary 0%, @color-primary-light 100%);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease-out;
+    }
+
+    &:hover {
+      border-color: @color-primary;
+      transform: translateY(-4px);
+      box-shadow: @shadow-lg;
+
+      &::before {
+        transform: scaleX(1);
+      }
+
+      .client-name {
+        color: @color-primary;
+      }
+    }
+  }
+
+  .client-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: @spacing-sm;
+  }
+
+  .client-name {
+    font-size: @font-size-lg;
+    font-weight: @font-weight-bold;
+    color: @color-text-primary;
+    transition: @transition-base;
+    letter-spacing: -0.5px;
+  }
+
+  .client-industry {
+    font-size: @font-size-xs;
+    color: @color-text-muted;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: @font-weight-medium;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// FEATURE BLOCKS (Alternating layout)
+// -----------------------------------------------------------------------------
+
+.feature-block {
+  margin-bottom: @spacing-4xl;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .feature-image {
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: @border-radius-lg;
+      box-shadow: @shadow-lg;
+    }
+  }
+
+  .feature-content {
+    h2, h3 {
+      margin-bottom: @spacing-md;
+    }
+
+    p {
+      color: @color-text-secondary;
+      line-height: @line-height-relaxed;
+      margin-bottom: @spacing-lg;
+    }
+  }
+
+  @media (max-width: @breakpoint-lg) {
+    .feature-image {
+      margin-bottom: @spacing-xl;
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// FOOTER
+// -----------------------------------------------------------------------------
+
+.footer {
+  background-color: @footer-bg;
+  color: @footer-text-color;
+  padding: @footer-padding;
+  margin-top: auto; // Push to bottom with flexbox
+  flex-shrink: 0;
+
+  a {
+    color: @footer-text-color;
+    transition: @transition-base;
+
+    &:hover {
+      color: @color-text-inverse;
+      text-decoration: none;
+    }
+  }
+
+  .small {
+    font-size: @font-size-sm;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// CV PAGE
+// -----------------------------------------------------------------------------
+
+.page-cv {
+  // Timeline container
+  .cv-timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto @spacing-4xl;
+
+    // Linea centrale (solo su desktop)
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 2px;
+      background-color: @border-color;
+      transform: translateX(-50%);
+
+      @media (max-width: @breakpoint-md) {
+        left: 30px;
+      }
+    }
+  }
+
+  // Timeline item
+  .timeline-item {
+    position: relative;
+    margin-bottom: @spacing-3xl;
+    width: 50%;
+    padding: 0 @spacing-2xl;
+
+    &.left {
+      left: 0;
+      padding-right: @spacing-3xl;
+
+      @media (max-width: @breakpoint-md) {
+        width: 100%;
+        left: 0;
+        padding-right: @spacing-md;
+        padding-left: 60px;
+      }
+    }
+
+    &.right {
+      left: 50%;
+
+      @media (max-width: @breakpoint-md) {
+        width: 100%;
+        left: 0;
+        padding-left: 60px;
+      }
+    }
+
+    // Pallino sulla timeline
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 16px;
+      height: 16px;
+      background-color: @color-primary;
+      border: 3px solid @color-bg-primary;
+      border-radius: 50%;
+      z-index: 1;
+
+      @media (min-width: @breakpoint-md + 1) {
+        .timeline-item.left& {
+          right: -8px;
+        }
+
+        .timeline-item.right& {
+          left: -8px;
+        }
+      }
+
+      @media (max-width: @breakpoint-md) {
+        left: 22px;
+      }
+    }
+  }
+
+  .timeline-content {
+    background-color: @card-bg;
+    padding: @spacing-xl;
+    border-radius: @card-border-radius;
+    border: 1px solid @border-color;
+
+    h4 {
+      color: @color-primary;
+      margin-bottom: @spacing-sm;
+    }
+
+    .date {
+      display: inline-block;
+      font-size: @font-size-sm;
+      color: @color-text-muted;
+      margin-bottom: @spacing-md;
+      font-weight: @font-weight-medium;
+    }
+
+    ul {
+      margin-top: @spacing-md;
+    }
+  }
+
+  // Grid per formazione e competenze
+  .cv-grid {
+    display: grid;
+    gap: @spacing-2xl;
+
+    // Su desktop: 2 colonne uguali
+    @media (min-width: @breakpoint-lg + 1) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    // Su tablet: ancora 2 colonne ma più flessibili
+    @media (min-width: @breakpoint-md + 1) and (max-width: @breakpoint-lg) {
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    }
+
+    // Su mobile: 1 colonna
+    @media (max-width: @breakpoint-md) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// CONTACT PAGE
+// -----------------------------------------------------------------------------
+
+.page-contatti {
+  .social-connect {
+    .social-link {
+      padding: @spacing-md @spacing-lg;
+      border: 1px solid @border-color;
+      border-radius: @border-radius-md;
+      transition: @transition-base;
+
+      &:hover {
+        background-color: @color-primary;
+        color: @color-text-inverse;
+        border-color: @color-primary;
+        text-decoration: none;
+
+        svg {
+          fill: @color-text-inverse;
+        }
+      }
+
+      svg {
+        transition: @transition-base;
+      }
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// RESPONSIVE GRID (CSS Grid)
+// -----------------------------------------------------------------------------
+
+// Esempio di grid responsivo per progetti
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: @spacing-xl;
+
+  @media (max-width: @breakpoint-sm) {
+    grid-template-columns: 1fr;
+  }
+}

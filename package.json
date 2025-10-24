@@ -1,0 +1,18 @@
+{
+  "name": "olena-website",
+  "version": "1.0.0",
+  "description": "Portfolio personale di Olena Klimova - Data Analyst",
+  "main": "portfolio-personale/index.html",
+  "scripts": {
+    "build:css": "lessc portfolio-personale/less/main.less portfolio-personale/css/main.css",
+    "watch:css": "lessc portfolio-personale/less/main.less portfolio-personale/css/main.css --watch",
+    "build:css:min": "lessc portfolio-personale/less/main.less portfolio-personale/css/main.css --compress",
+    "build": "npm run build:css:min"
+  },
+  "keywords": ["portfolio", "data-analyst", "less", "bootstrap"],
+  "author": "Olena Klimova",
+  "license": "ISC",
+  "devDependencies": {
+    "less": "^4.4.2"
+  }
+}
