@@ -47,3 +47,7 @@ dist/
 # Backup files
 *.bak
 *.backup
+
+# Documentation (mantieni solo in locale)
+README.md
+PROJECT_DOCUMENTATION.md
